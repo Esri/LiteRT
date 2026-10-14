@@ -3,33 +3,32 @@
 
 Update the version of compilers, cmake, and ninja in the scripts.
 
-- OpenCV 4.13.0
+- LiteRT 2.3.0
 - llvm 19.1.2
 - CMake 4.2.1
 - Ninja 1.12.1
-- Xcode 16.2.0
-- Visual Studio 2022 toolchain version 14.44.35207
-- Windows SDK 10.0.19041.0
+- Xcode 26.3.0 targeting macOS 16.0
+- Visual Studio 2026 toolchain version 14.50.35717 targeting Windows SDK 10.0.19041.0
 
 ## linux
 
 ```bash
 cd esri
-./build_opencv_linux.sh
+./build_litert_linux.sh
 ```
 
 ## macos
 
 ```bash
 cd esri
-./build_opencv_macos.sh
+./build_litert_macos.sh
 ```
 
 ## windows
 
 ```bash
 cd esri
-./build_opencv_windows.sh
+./build_litert_windows.sh
 ```
 
-Copy the generated opencv zip file to the network shares
+Copy the generated litert zip file to the network shares
