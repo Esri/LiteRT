@@ -340,8 +340,8 @@ endif()
 # Qualcomm
 option(LITERT_ENABLE_QUALCOMM "Enable Qualcomm dispatch build (requires QNN SDK headers/libs)" OFF)
 if(QAIRT_HEADERS_DIR AND NOT LITERT_ENABLE_QUALCOMM)
-  message(STATUS "Enabling Qualcomm dispatch: QNN headers detected at ${QAIRT_HEADERS_DIR}")
-  set(LITERT_ENABLE_QUALCOMM ON CACHE BOOL "" FORCE)
+  # message(STATUS "Enabling Qualcomm dispatch: QNN headers detected at ${QAIRT_HEADERS_DIR}")
+  # set(LITERT_ENABLE_QUALCOMM ON CACHE BOOL "" FORCE)
 endif()
 if(LITERT_ENABLE_QUALCOMM)
   # Use modular CMake structure for Qualcomm
@@ -351,8 +351,8 @@ endif()
 # Samsung
 option(LITERT_ENABLE_SAMSUNG "Enable Samsung NPU build" ON)
 if(LITECORE_HEADERS_DIR AND NOT LITERT_ENABLE_SAMSUNG)
-  message(STATUS "Enabling Samsung dispatch: Samsung headers detected at ${LITECORE_HEADERS_DIR}")
-  set(LITERT_ENABLE_SAMSUNG ON CACHE BOOL "" FORCE)
+  # message(STATUS "Enabling Samsung dispatch: Samsung headers detected at ${LITECORE_HEADERS_DIR}")
+  # set(LITERT_ENABLE_SAMSUNG ON CACHE BOOL "" FORCE)
 endif()
 if(LITERT_ENABLE_SAMSUNG)
   # Use modular CMake structure for Samsung
