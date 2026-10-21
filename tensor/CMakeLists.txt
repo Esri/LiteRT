@@ -120,10 +120,10 @@ target_link_libraries(litert_tensor_api_tflite_backend
         absl::span
 )
 
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/examples/segmentation/CMakeLists.txt")
-    add_subdirectory(examples/segmentation)
-endif()
+# if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/examples/segmentation/CMakeLists.txt")
+#     add_subdirectory(examples/segmentation)
+# endif()
 
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/examples/gemma3/CMakeLists.txt")
-    add_subdirectory(examples/gemma3)
-endif()
+# if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/examples/gemma3/CMakeLists.txt")
+#     add_subdirectory(examples/gemma3)
+# endif()
