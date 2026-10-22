@@ -413,3 +413,26 @@ if(LITERT_PLATFORM_ANDROID)
     find_library(ANDROID_GLESV2_LIB GLESv2)
     target_link_libraries(litert_runtime_c_api_shared_lib PRIVATE ${LOG_LIB} log nativewindow ${ANDROID_EGL_LIB} ${ANDROID_GLESV3_LIB} ${ANDROID_GLESV2_LIB})
 endif()
+
+install(TARGETS litert_runtime_c_api_shared_lib
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
+
+foreach(header IN LISTS LITERT_C_HEADERS)
+    get_filename_component(_litert_c_header_dir "${header}" DIRECTORY)
+    install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/${header}"
+        DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/litert/c/${_litert_c_header_dir}"
+    )
+endforeach()
+
+foreach(header IN LISTS LITERT_C_REQUIRED_VENDOR_HEADERS)
+    install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/../vendors/c/${header}"
+        DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/litert/vendors/c"
+    )
+endforeach()
+
+install(FILES "${LITERT_BUILD_COMMON_GENERATED_DIR}/build_config.h"
+    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/litert/build_common"
+)

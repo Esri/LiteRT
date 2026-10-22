@@ -23,6 +23,8 @@ endif()
 
 project(LiteRT VERSION 1.4.0 LANGUAGES CXX C)
 
+include(GNUInstallDirs)
+
 set(CMAKE_WARN_DEPRECATED OFF CACHE BOOL
     "Suppress deprecation warnings from vendored CMake dependencies" FORCE)
 set(CMAKE_SUPPRESS_DEVELOPER_WARNINGS 1 CACHE INTERNAL
@@ -291,4 +293,3 @@ if(LITERT_BUILD_SUPPORT)
   add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../support"
                    "${CMAKE_CURRENT_BINARY_DIR}/support")
 endif()
-

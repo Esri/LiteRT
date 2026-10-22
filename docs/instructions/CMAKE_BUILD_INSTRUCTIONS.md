@@ -93,6 +93,20 @@ build directory (`cmake_build_android_arm64` or `cmake_build_android_arm64_debug
    cmake --build cmake_build_debug -j
    ```
 
+## Install the shared library and headers
+
+After configuring and building, install the LiteRT shared library and C API
+headers to a prefix of your choice:
+
+```bash
+cmake --install cmake_build --prefix "$PWD/install"
+```
+
+The library is installed under `install/lib` (or the platform-specific library
+directory), and C API headers are installed under `install/include/litert/c`.
+Use the corresponding build directory for another preset, such as
+`cmake_build_android_arm64`.
+
 ## Customize your build target
 
 ## Customizing CMake Builds
