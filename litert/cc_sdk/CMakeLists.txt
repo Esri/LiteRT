@@ -24,12 +24,16 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 # Suppress deprecation warnings (matching Bazel build behavior in .bazelrc)
-# The codebase has deprecated Error constructors that are still in use
-add_compile_options(
-  -Wno-deprecated-declarations
-  -Wno-return-type
-  -fpermissive
-)
+# The codebase has deprecated Error constructors that are still in use.
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
+  add_compile_options(
+    -Wno-deprecated-declarations
+    -Wno-return-type
+  )
+endif()
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+  add_compile_options(-fpermissive)
+endif()
 
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/litert/build_common/build_config.h.in")
   set(LITERT_CC_SDK_TREE_ROOT "${CMAKE_CURRENT_SOURCE_DIR}")

@@ -44,12 +44,18 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
   add_subdirectory("${LITERT_SOURCE_DIR}" "${CMAKE_CURRENT_BINARY_DIR}/litert_build" EXCLUDE_FROM_ALL)
 endif()
 
-add_compile_options(
-  -Wno-deprecated-declarations
-  -Wno-nullability-completeness
-  -Wno-return-type
-  -fpermissive
-)
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
+  add_compile_options(
+    -Wno-deprecated-declarations
+    -Wno-return-type
+  )
+endif()
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wno-nullability-completeness)
+endif()
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+  add_compile_options(-fpermissive)
+endif()
 
 add_subdirectory(common)
 add_subdirectory(compiler)
