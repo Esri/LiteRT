@@ -641,20 +641,20 @@ class RandomTensorDataBuilder {
   std::pair<double, double> Bounds() const {
     if constexpr (std::is_integral_v<D> && !std::is_same_v<D, int64_t>) {
       if (std::holds_alternative<Dummy>(int_config_)) {
-        return {0, static_cast<double>(std::numeric_limits<D>::max())};
+        return {0, static_cast<double>((std::numeric_limits<D>::max)())};
       } else if (std::holds_alternative<NullOpt>(int_config_)) {
-        return {std::numeric_limits<D>::min(),
-                static_cast<double>(std::numeric_limits<D>::max())};
+        return {(std::numeric_limits<D>::min)(),
+                static_cast<double>((std::numeric_limits<D>::max)())};
       } else {
         auto [min, max] = std::get<std::pair<int32_t, int32_t>>(int_config_);
         return {static_cast<double>(min), static_cast<double>(max)};
       }
     } else if constexpr (std::is_same_v<D, float>) {
       if (std::holds_alternative<Dummy>(float_config_)) {
-        return {0, std::numeric_limits<float>::max()};
+        return {0, (std::numeric_limits<float>::max)()};
       } else if (std::holds_alternative<NullOpt>(float_config_)) {
         return {std::numeric_limits<float>::lowest(),
-                std::numeric_limits<float>::max()};
+                (std::numeric_limits<float>::max)()};
       } else if (std::holds_alternative<F16InF32>(float_config_)) {
         return {std::numeric_limits<float>::lowest(), 65504.0};
       } else if (std::holds_alternative<Sin>(float_config_)) {
@@ -665,10 +665,10 @@ class RandomTensorDataBuilder {
       }
     } else if constexpr (std::is_same_v<D, int64_t>) {
       if (std::holds_alternative<Dummy>(int64_config_)) {
-        return {0, static_cast<double>(std::numeric_limits<D>::max())};
+        return {0, static_cast<double>((std::numeric_limits<D>::max)())};
       } else if (std::holds_alternative<NullOpt>(int64_config_)) {
-        return {std::numeric_limits<D>::min(),
-                static_cast<double>(std::numeric_limits<D>::max())};
+        return {(std::numeric_limits<D>::min)(),
+                static_cast<double>((std::numeric_limits<D>::max)())};
       } else {
         auto [min, max] = std::get<std::pair<int64_t, int64_t>>(int64_config_);
         return {static_cast<double>(min), static_cast<double>(max)};

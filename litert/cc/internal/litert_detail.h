@@ -250,7 +250,7 @@ auto Avg(It begin, It end) -> RemoveCvRefT<decltype(*std::declval<It>())> {
   using T = decltype(Avg(begin, end));
   const auto size = std::distance(begin, end);
   if (size == 0) {
-    return std::numeric_limits<T>::max();
+    return (std::numeric_limits<T>::max)();
   }
   return std::accumulate(begin, end, T{}) / static_cast<T>(size);
 }

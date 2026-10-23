@@ -43,9 +43,9 @@ struct NumericLimits {
 
  public:
   /// @brief Returns the smallest positive value.
-  static constexpr T Min() { return StdLimits::min(); }
+  static constexpr T Min() { return (StdLimits::min)(); }
   /// @brief Returns the largest positive value.
-  static constexpr T Max() { return StdLimits::max(); }
+  static constexpr T Max() { return (StdLimits::max)(); }
   /// @brief Returns the largest-magnitude negative value.
   static constexpr T Lowest() { return StdLimits::lowest(); }
   /// @brief Returns the machine epsilon.
@@ -70,14 +70,14 @@ static constexpr WideType<T> Widen(T val) {
 ///        intended data type's limits.
 template <typename T>
 static constexpr T UpperBoundary(WideType<T> bound) {
-  return std::min(bound, Widen(NumericLimits<T>::Max()));
+  return (std::min)(bound, Widen(NumericLimits<T>::Max()));
 }
 
 /// @brief Creates a lower boundary from a value that may exceed the
 ///        intended data type's limits.
 template <typename T>
 static constexpr T LowerBoundary(WideType<T> bound) {
-  return std::max(bound, Widen(NumericLimits<T>::Lowest()));
+  return (std::max)(bound, Widen(NumericLimits<T>::Lowest()));
 }
 
 /// @brief Flushes denormals or NaN to zero.

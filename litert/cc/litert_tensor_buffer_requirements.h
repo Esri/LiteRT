@@ -146,10 +146,10 @@ inline Expected<TensorBufferRequirements> Join(
   }
 
   // Take the max as buffer size.
-  auto buffer_size = std::max(src1.buffer_size_, src2.buffer_size_);
+  auto buffer_size = (std::max)(src1.buffer_size_, src2.buffer_size_);
 
   // Take the max alignment requirement.
-  auto alignment = std::max(src1.alignment_, src2.alignment_);
+  auto alignment = (std::max)(src1.alignment_, src2.alignment_);
 
   return TensorBufferRequirements(buffer_types, buffer_size, strides,
                                   alignment);

@@ -66,7 +66,7 @@ inline Expected<MagicNumberConfigsPtr> CreateMagicNumberConfigs(
   constexpr std::size_t kElementSize = sizeof(LiteRtMagicNumberConfig);
   if (num_configs == 0 ||
 
-      num_configs > (std::numeric_limits<std::size_t>::max() - kHeaderSize) /
+      num_configs > ((std::numeric_limits<std::size_t>::max)() - kHeaderSize) /
                         kElementSize) {
     return Unexpected(Error(Status::kErrorInvalidArgument,
                             "Magic number configs allocation size overflow"));
@@ -82,7 +82,7 @@ inline Expected<MagicNumberConfigsPtr> CreateMagicNumberConfigs(
 inline Expected<MagicNumberVerificationsPtr> CreateMagicNumberVerifications(
     std::size_t num_verifications) {
   if (num_verifications >
-      static_cast<std::size_t>(std::numeric_limits<int64_t>::max())) {
+      static_cast<std::size_t>((std::numeric_limits<int64_t>::max)())) {
     return Unexpected(
         Error(Status::kErrorInvalidArgument,
               "Number of magic number verifications exceeds supported range"));
@@ -93,7 +93,7 @@ inline Expected<MagicNumberVerificationsPtr> CreateMagicNumberVerifications(
   if (num_verifications == 0 ||
 
       num_verifications >
-          (std::numeric_limits<std::size_t>::max() - kHeaderSize) /
+          ((std::numeric_limits<std::size_t>::max)() - kHeaderSize) /
               kElementSize) {
     return Unexpected(
         Error(Status::kErrorInvalidArgument,

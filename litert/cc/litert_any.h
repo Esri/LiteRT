@@ -140,14 +140,14 @@ std::string OutOfRangeMessage(const char* type_name, V value) {
   std::stringstream message;
   message << "LiteRtAny " << type_name << " is out of range. "
           << std::numeric_limits<T>::lowest() << " <= " << value
-          << " <= " << std::numeric_limits<T>::max();
+          << " <= " << (std::numeric_limits<T>::max)();
   return message.str();
 }
 
 template <class T>
 Expected<T> GetInt(const LiteRtAny& any) {
   LITERT_RETURN_IF_ERROR(CheckType(any, kLiteRtAnyTypeInt));
-  if (any.int_value > std::numeric_limits<T>::max() ||
+  if (any.int_value > (std::numeric_limits<T>::max)() ||
       any.int_value < std::numeric_limits<T>::lowest()) {
     return Error(Status::kErrorInvalidArgument,
                  OutOfRangeMessage<T>("integer", any.int_value));
@@ -158,7 +158,7 @@ Expected<T> GetInt(const LiteRtAny& any) {
 template <class T>
 Expected<T> GetReal(const LiteRtAny& any) {
   LITERT_RETURN_IF_ERROR(CheckType(any, kLiteRtAnyTypeReal));
-  if (any.real_value > std::numeric_limits<T>::max() ||
+  if (any.real_value > (std::numeric_limits<T>::max)() ||
       any.real_value < std::numeric_limits<T>::lowest()) {
     return Error(Status::kErrorInvalidArgument,
                  OutOfRangeMessage<T>("real", any.real_value));
