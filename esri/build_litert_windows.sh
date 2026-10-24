@@ -17,7 +17,6 @@ PATH="/c/rtc/cmake/4.2.1/bin:${PATH}"
 #   -A ARM64 \
 #   -DCMAKE_SYSTEM_PROCESSOR=ARM64 \
 #   -DCMAKE_SYSTEM_VERSION=${TARGET_SDK} \
-#   -DCMAKE_BUILD_TYPE=Release \
 #   -DCMAKE_INSTALL_PREFIX=install/${LITERT_VERSION}/arm64 \
 #   \
 #   -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
@@ -26,8 +25,7 @@ PATH="/c/rtc/cmake/4.2.1/bin:${PATH}"
 #   -DLITERT_ENABLE_NPU=OFF \
 #   -DLITERT_ENABLE_QUALCOMM=OFF \
 #   -DLITERT_ENABLE_SAMSUNG=OFF
-# cmake --build build_arm64
-# cmake --install build_arm64
+# cmake --build build_arm64 --config Release --target INSTALL
 
 cmake -S ../litert -B build_x64 \
   -G "${GENERATOR}" \
@@ -35,7 +33,6 @@ cmake -S ../litert -B build_x64 \
   -A x64 \
   -DCMAKE_SYSTEM_PROCESSOR=x64 \
   -DCMAKE_SYSTEM_VERSION=${TARGET_SDK} \
-  -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=install/${LITERT_VERSION}/x64 \
   \
   -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
@@ -44,8 +41,7 @@ cmake -S ../litert -B build_x64 \
   -DLITERT_ENABLE_NPU=OFF \
   -DLITERT_ENABLE_QUALCOMM=OFF \
   -DLITERT_ENABLE_SAMSUNG=OFF
-cmake --build build_x64
-cmake --install build_x64
+cmake --build build_x64 --config Release --target INSTALL
 
 # cd install
 # powershell.exe Compress-Archive ${LITERT_VERSION} ../litert-${LITERT_VERSION}.zip
